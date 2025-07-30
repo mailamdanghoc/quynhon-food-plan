@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Food Map Quy Nhơn</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🥢 Food Map Quy Nhơn</h1>
+
+    <div class="filters">
+      <button data-filter="all">Tất cả</button>
+      <button data-filter="sang">Sáng</button>
+      <button data-filter="trua">Trưa</button>
+      <button data-filter="toi">Tối</button>
+      <button data-filter="trangmieng">Tráng miệng</button>
+      <button data-filter="cafe">Cà phê</button>
+    </div>
+
+    <div id="places" class="places"></div>
+  </div>
+
+  <script>
+    const data = [
+      {
+        name: "Bún cá Ngọc Liên",
+        address: "379 Nguyễn Huệ",
+        dish: "Bún chả cá, bún cá ngừ, bún sứa",
+        time: "6h - 22h",
+        map: "https://www.google.com/maps?q=379+Nguy%E1%BB%85n+Hu%E1%BB%87,+Quy+Nh%C6%A1n",
+        tag: "sang"
+      },
+      {
+        name: "Bún rạm Thuỷ",
+        address: "261 Tăng Bạt Hổ",
+        dish: "Bún rạm",
+        time: "6h - hết sớm",
+        map: "https://www.google.com/maps?q=261+T%C4%83ng+B%E1%BA%A1t+H%E1%BB%95,+Quy+Nh%C6%A1n",
+        tag: "sang"
+      },
+      {
+        name: "Gỏi cá Thanh Kiều",
+        address: "69/1 Trần Hưng Đạo",
+        dish: "Gỏi cá, bò tái, cháo hàu",
+        time: "9h - 21h",
+        map: "https://www.google.com/maps?q=69/1+Tr%E1%BA%A7n+H%C6%B0ng+%C4%90%E1%BA%A1o,+Quy+Nh%C6%A1n",
+        tag: "trua"
+      },
+      {
+        name: "Bánh xèo Gái Nguyệt",
+        address: "188 Bạch Đằng",
+        dish: "Bánh xèo tôm nhảy",
+        time: "16h - 22h",
+        map: "https://www.google.com/maps?q=188+B%E1%BA%A1ch+%C4%90%E1%BA%B1ng,+Quy+Nh%C6%A1n",
+        tag: "toi"
+      },
+      {
+        name: "Trái cây dầm Nhung",
+        address: "96 Vũ Bảo",
+        dish: "Trái cây dầm, sữa chua",
+        time: "Cả ngày",
+        map: "https://www.google.com/maps?q=96+V%C5%A9+B%E1%BA%A3o,+Quy+Nh%C6%A1n",
+        tag: "trangmieng"
+      },
+      {
+        name: "Cafe Four Seasons",
+        address: "Xuân Diệu - Trần Phú",
+        dish: "Cà phê view biển",
+        time: "7h - 23h",
+        map: "https://www.google.com/maps?q=Four+Seasons+Cafe,+Quy+Nhon",
+        tag: "cafe"
+      }
+    ];
+
+    const container = document.getElementById('places');
+    const buttons = document.querySelectorAll('[data-filter]');
+
+    function render(filter = 'all') {
+      container.innerHTML = '';
+      const filtered = filter === 'all' ? data : data.filter(d => d.tag === filter);
+      filtered.forEach(place => {
+        container.innerHTML += `
+          <div class="card">
+            <h3>${place.name}</h3>
+            <p><strong>Địa chỉ:</strong> ${place.address}</p>
+            <p><strong>Món:</strong> ${place.dish}</p>
+            <p><strong>Giờ mở cửa:</strong> ${place.time}</p>
+            <a href="${place.map}" target="_blank">📍 Xem bản đồ</a>
+          </div>
+        `;
+      });
+    }
+
+    render();
+
+    buttons.forEach(btn => btn.addEventListener('click', () => {
+      const f = btn.getAttribute('data-filter');
+      render(f);
+    }));
+  </script>
+</body>
+</html>
