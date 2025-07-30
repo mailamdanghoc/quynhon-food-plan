@@ -22,142 +22,128 @@
   </main>
   <script>
     const places = [
-      {
-        name: "Bún cá Ngọc Liên",
-        type: "breakfast",
-        address: "379 Nguyễn Huệ, TP Quy Nhơn",
-        hours: "6h - 22h",
-        rating: 4.5,
-        mapEmbed: "https://www.google.com/maps?q=379+Nguyễn+Huệ,+Quy+Nhơn&output=embed",
-        mapLink: "https://www.google.com/maps/search/?api=1&query=379+Nguyễn+Huệ,+Quy+Nhơn"
-      },
-      {
-        name: "Bún rạm Thuỷ",
-        type: "breakfast",
-        address: "261 Tăng Bạt Hổ",
-        hours: "Sáng",
-        rating: 4.4,
-        mapEmbed: "https://www.google.com/maps?q=261+Tăng+Bạt+Hổ,+Quy+Nhơn&output=embed",
-        mapLink: "https://www.google.com/maps/search/?api=1&query=261+Tăng+Bạt+Hổ,+Quy+Nhơn"
-      },
-      {
-        name: "Bún tôm, bún rạm Mỹ Hạnh",
-        type: "breakfast",
-        address: "45 Ngô Gia Tự",
-        hours: "6h - 16h",
-        rating: 4.3,
-        mapEmbed: "https://www.google.com/maps?q=45+Ngô+Gia+Tự,+Quy+Nhơn&output=embed",
-        mapLink: "https://www.google.com/maps/search/?api=1&query=45+Ngô+Gia+Tự,+Quy+Nhơn"
-      },
-      {
-        name: "Ốc Hoa",
-        type: "dinner",
-        address: "51 Tạ Quang Bửu",
-        hours: "Chiều tối",
-        rating: 4.2,
-        mapEmbed: "https://www.google.com/maps?q=51+Tạ+Quang+Bửu,+Quy+Nhơn&output=embed",
-        mapLink: "https://www.google.com/maps/search/?api=1&query=51+Tạ+Quang+Bửu,+Quy+Nhơn"
-      },
-      {
-        name: "Bánh xèo Gái Nguyệt",
-        type: "dinner",
-        address: "188 Bạch Đằng",
-        hours: "16h - 22h",
-        rating: 4.6,
-        mapEmbed: "https://www.google.com/maps?q=188+Bạch+Đằng,+Quy+Nhơn&output=embed",
-        mapLink: "https://www.google.com/maps/search/?api=1&query=188+Bạch+Đằng,+Quy+Nhơn"
-      },
-      {
-        name: "Nem chả nướng",
-        type: "dinner",
-        address: "30 Hải Thượng Lãn Ông",
-        hours: "Chiều",
-        rating: 4.3,
-        mapEmbed: "https://www.google.com/maps?q=30+Hải+Thượng+Lãn+Ông,+Quy+Nhơn&output=embed",
-        mapLink: "https://www.google.com/maps/search/?api=1&query=30+Hải+Thượng+Lãn+Ông,+Quy+Nhơn"
-      },
-      {
-        name: "Gỏi cá Thanh Kiều",
-        type: "lunch",
-        address: "69/1 Trần Hưng Đạo",
-        hours: "9h - 21h",
-        rating: 4.4,
-        mapEmbed: "https://www.google.com/maps?q=69/1+Trần+Hưng+Đạo,+Quy+Nhơn&output=embed",
-        mapLink: "https://www.google.com/maps/search/?api=1&query=69/1+Trần+Hưng+Đạo,+Quy+Nhơn"
-      },
-      {
-        name: "Bánh bèo - bột lọc",
-        type: "dinner",
-        address: "63 Hoàng Quốc Việt",
-        hours: "15h - 18h",
-        rating: 4.0,
-        mapEmbed: "https://www.google.com/maps?q=63+Hoàng+Quốc+Việt,+Quy+Nhơn&output=embed",
-        mapLink: "https://www.google.com/maps/search/?api=1&query=63+Hoàng+Quốc+Việt,+Quy+Nhơn"
-      },
-      {
-        name: "Bánh mì chấm Loan",
-        type: "dinner",
-        address: "153 Trần Hưng Đạo",
-        hours: "17h - 23h",
-        rating: 4.2,
-        mapEmbed: "https://www.google.com/maps?q=153+Trần+Hưng+Đạo,+Quy+Nhơn&output=embed",
-        mapLink: "https://www.google.com/maps/search/?api=1&query=153+Trần+Hưng+Đạo,+Quy+Nhơn"
-      },
-      {
-        name: "Kem Vạn Thành",
-        type: "drink",
-        address: "95 Mai Xuân Thưởng",
-        hours: "Cả ngày",
-        rating: 4.7,
-        mapEmbed: "https://www.google.com/maps?q=95+Mai+Xuân+Thưởng,+Quy+Nhơn&output=embed",
-        mapLink: "https://www.google.com/maps/search/?api=1&query=95+Mai+Xuân+Thưởng,+Quy+Nhơn"
-      },
-      {
-        name: "Trái cây dầm Nhung",
-        type: "drink",
-        address: "96 Vũ Bảo",
-        hours: "Cả ngày",
-        rating: 4.5,
-        mapEmbed: "https://www.google.com/maps?q=96+Vũ+Bảo,+Quy+Nhơn&output=embed",
-        mapLink: "https://www.google.com/maps/search/?api=1&query=96+Vũ+Bảo,+Quy+Nhơn"
-      },
-      {
-        name: "Sữa đậu cô Năm",
-        type: "drink",
-        address: "160 Xuân Diệu",
-        hours: "17h - 23h",
-        rating: 4.6,
-        mapEmbed: "https://www.google.com/maps?q=160+Xuân+Diệu,+Quy+Nhơn&output=embed",
-        mapLink: "https://www.google.com/maps/search/?api=1&query=160+Xuân+Diệu,+Quy+Nhơn"
-      },
-      {
-        name: "Bánh xèo Rau Mầm",
-        type: "breakfast",
-        address: "91 Đống Đa",
-        hours: "6h - 22h",
-        rating: 4.4,
-        mapEmbed: "https://www.google.com/maps?q=91+Đống+Đa,+Quy+Nhơn&output=embed",
-        mapLink: "https://www.google.com/maps/search/?api=1&query=91+Đống+Đa,+Quy+Nhơn"
-      },
-      {
-        name: "Quán Bảy Đức",
-        type: "dinner",
-        address: "Đang cập nhật",
-        hours: "Ăn tối",
-        rating: 4.1,
-        mapEmbed: "https://www.google.com/maps?q=quán+bảy+đức+quy+nhơn&output=embed",
-        mapLink: "https://www.google.com/maps/search/?api=1&query=quán+bảy+đức+quy+nhơn"
-      },
-      {
-        name: "Cafe Four Seasons",
-        type: "drink",
-        address: "Xuân Diệu, Trần Phú",
-        hours: "7h - 23h",
-        rating: 4.6,
-        mapEmbed: "https://www.google.com/maps?q=four+seasons+quy+nhơn&output=embed",
-        mapLink: "https://www.google.com/maps/search/?api=1&query=four+seasons+quy+nhơn"
-      }
-    ];
+  {
+    name: "Bún cá Ngọc Liên",
+    type: "breakfast",
+    address: "379 Nguyễn Huệ, TP Quy Nhơn",
+    hours: "6h - 22h",
+    rating: 4.5,
+    mapEmbed: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.2275085797282!2d109.22188807591878!3d13.765149286628127!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x316f6b56792d1bf7%3A0x46b8294ab06261e!2zQsO6biBjw6EgTmfhu41jIExpw6pu!5e0!3m2!1sen!2sus!4v1753886943942!5m2!1sen!2sus" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`
+  },
+  {
+    name: "Bún rạm Thuỷ",
+    type: "breakfast",
+    address: "261 Tăng Bạt Hổ",
+    hours: "Sáng",
+    rating: 4.4,
+    mapEmbed: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7750.314581172278!2d109.21744544498115!3d13.769386496497127!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x316f6c8fb9197ed9%3A0x221dcd0cd0d2b53!2zQsO6biBUaMO5eQ!5e0!3m2!1svi!2s!4v1753887509647!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`
+  },
+  {
+    name: "Bún tôm, bún rạm Mỹ Hạnh",
+    type: "breakfast",
+    address: "45 Ngô Gia Tự",
+    hours: "6h - 16h",
+    rating: 4.3,
+    mapEmbed: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.3841064978233!2d109.20820457591881!3d13.755694986636692!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x316f6d90ebec3cad%3A0xc853aab0afac788e!2zQsO6biBS4bqhbSAtIELDum4gVMO0bSBN4bu5IEjhuqFuaCBRdXkgTmjGoW4!5e0!3m2!1svi!2s!4v1753887624003!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`
+  },
+  {
+    name: "Ốc Hoa",
+    type: "dinner",
+    address: "51 Tạ Quang Bửu",
+    hours: "Chiều tối",
+    rating: 4.2,
+    mapEmbed: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3992179.435057829!2d105.29840715026917!3d12.274465958682653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x316f6bfd2b3687bf%3A0x6fa4542d4eb0a81!2z4buQYyBIb2E!5e0!3m2!1svi!2s!4v1753887661133!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`
+  },
+  {
+    name: "Bánh xèo Gái Nguyệt",
+    type: "dinner",
+    address: "188 Bạch Đằng",
+    hours: "16h - 22h",
+    rating: 4.6,
+    mapEmbed: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.031934102652!2d109.23049737591896!3d13.776947786617567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x316f6d2f626b2621%3A0xbf4268cedbe83a8f!2zQsOhbmggeMOobyBnw6FpIE5ndXnhu4d0!5e0!3m2!1svi!2s!4v1753887702241!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`
+  },
+  {
+    name: "Nem chả nướng",
+    type: "dinner",
+    address: "30 Hải Thượng Lãn Ông",
+    hours: "Chiều",
+    rating: 4.3,
+    mapEmbed: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.219565144838!2d109.22390327591873!3d13.76562868662771!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x316f6dee7e3e0835%3A0x81d3d888e3cb1e8f!2zVHV54bq_dCBuZW0gY2jhuqMsIGLDoW5oIGN14buRbg!5e0!3m2!1sen!2sus!4v1753888309444!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`
+  },
+  {
+    name: "Gỏi cá Thanh Kiều",
+    type: "lunch",
+    address: "69/1 Trần Hưng Đạo",
+    hours: "9h - 21h",
+    rating: 4.4,
+    mapEmbed: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.1139500141385!2d109.244542275919!3d13.77200118662199!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x316f6d385621fcfb%3A0x83319f4aa72cd7bc!2zR-G7j2kgQ8OhIFRoYW5oIEtp4buBdQ!5e0!3m2!1sen!2sus!4v1753888347079!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`
+  },
+  {
+    name: "Bánh bèo - bột lọc",
+    type: "dinner",
+    address: "63 Hoàng Quốc Việt",
+    hours: "15h - 18h",
+    rating: 4.0,
+    mapEmbed: `<iframe src="https://www.google.com/maps?q=63+Hoàng+Quốc+Việt,+Quy+Nhơn&output=embed" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`
+  },
+  {
+    name: "Bánh mì chấm Loan",
+    type: "dinner",
+    address: "153 Trần Hưng Đạo",
+    hours: "17h - 23h",
+    rating: 4.2,
+    mapEmbed: `<iframe src="https://www.google.com/maps?q=153+Trần+Hưng+Đạo,+Quy+Nhơn&output=embed" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`
+  },
+  {
+    name: "Kem Vạn Thành",
+    type: "drink",
+    address: "95 Mai Xuân Thưởng",
+    hours: "Cả ngày",
+    rating: 4.7,
+    mapEmbed: `<iframe src="https://www.google.com/maps?q=95+Mai+Xuân+Thưởng,+Quy+Nhơn&output=embed" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`
+  },
+  {
+    name: "Trái cây dầm Nhung",
+    type: "drink",
+    address: "96 Vũ Bảo",
+    hours: "Cả ngày",
+    rating: 4.5,
+    mapEmbed: `<iframe src="https://www.google.com/maps?q=96+Vũ+Bảo,+Quy+Nhơn&output=embed" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`
+  },
+  {
+    name: "Sữa đậu cô Năm",
+    type: "drink",
+    address: "160 Xuân Diệu",
+    hours: "17h - 23h",
+    rating: 4.6,
+    mapEmbed: `<iframe src="https://www.google.com/maps?q=160+Xuân+Diệu,+Quy+Nhơn&output=embed" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`
+  },
+  {
+    name: "Bánh xèo Rau Mầm",
+    type: "breakfast",
+    address: "91 Đống Đa",
+    hours: "6h - 22h",
+    rating: 4.4,
+    mapEmbed: `<iframe src="https://www.google.com/maps?q=91+Đống+Đa,+Quy+Nhơn&output=embed" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`
+  },
+  {
+    name: "Quán Bảy Đức",
+    type: "dinner",
+    address: "Đang cập nhật",
+    hours: "Ăn tối",
+    rating: 4.1,
+    mapEmbed: `<iframe src="https://www.google.com/maps?q=quán+bảy+đức+quy+nhơn&output=embed" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`
+  },
+  {
+    name: "Cafe Four Seasons",
+    type: "drink",
+    address: "Xuân Diệu, Trần Phú",
+    hours: "7h - 23h",
+    rating: 4.6,
+    mapEmbed: `<iframe src="https://www.google.com/maps?q=four+seasons+quy+nhơn&output=embed" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`
+  }
+];
+
 
     function renderPlaces() {
       const container = document.getElementById('places');
@@ -165,20 +151,23 @@
       for (const place of places) {
         const card = document.createElement('div');
         card.className = `card ${place.type}`;
-        const stars = '★'.repeat(Math.round(place.rating)) + '☆'.repeat(5 - Math.round(place.rating));
+        const stars = Array.from({ length: 5 }, (_, i) => `
+          <span class="star ${i < Math.round(place.rating) ? 'filled' : ''}">★</span>
+        `).join('');
+
         card.innerHTML = `
           <h2>${place.name}</h2>
           <p><strong>Địa chỉ:</strong> ${place.address}</p>
           <p><strong>Giờ mở cửa:</strong> ${place.hours}</p>
-          <p><strong>Đánh giá:</strong> ${stars} (${place.rating})</p>
+          <p><strong>Đánh giá:</strong> <span class="stars">${stars}</span> (${place.rating})</p>
           <div class="map-frame">
-            <iframe src="${place.mapEmbed}" loading="lazy"></iframe>
+            ${place.mapEmbed}
           </div>
-          <a class="map-link" href="${place.mapLink}" target="_blank">🔗 Mở trên Google Maps</a>
         `;
         container.appendChild(card);
       }
     }
+
 
     function filterPlaces(type) {
       const cards = document.querySelectorAll('.card');
