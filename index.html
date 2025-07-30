@@ -3,102 +3,178 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Food Map Quy Nhơn</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Địa điểm ăn uống Quy Nhơn</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>🥢 Food Map Quy Nhơn</h1>
-
-    <div class="filters">
-      <button data-filter="all">Tất cả</button>
-      <button data-filter="sang">Sáng</button>
-      <button data-filter="trua">Trưa</button>
-      <button data-filter="toi">Tối</button>
-      <button data-filter="trangmieng">Tráng miệng</button>
-      <button data-filter="cafe">Cà phê</button>
-    </div>
-
-    <div id="places" class="places"></div>
-  </div>
-
+  <header>
+    <h1>🦐 Ăn gì ở Quy Nhơn?</h1>
+    <nav>
+      <button onclick="filterPlaces('all')">Tất cả</button>
+      <button onclick="filterPlaces('breakfast')">Ăn sáng</button>
+      <button onclick="filterPlaces('lunch')">Ăn trưa</button>
+      <button onclick="filterPlaces('dinner')">Ăn tối</button>
+      <button onclick="filterPlaces('drink')">Cafe & Tráng miệng</button>
+    </nav>
+  </header>
+  <main id="places">
+    <!-- Địa điểm sẽ được thêm ở đây -->
+  </main>
   <script>
-    const data = [
+    const places = [
       {
         name: "Bún cá Ngọc Liên",
-        address: "379 Nguyễn Huệ",
-        dish: "Bún chả cá, bún cá ngừ, bún sứa",
-        time: "6h - 22h",
-        map: "https://www.google.com/maps?q=379+Nguy%E1%BB%85n+Hu%E1%BB%87,+Quy+Nh%C6%A1n",
-        tag: "sang"
+        type: "breakfast",
+        address: "379 Nguyễn Huệ, TP Quy Nhơn",
+        hours: "6h - 22h",
+        mapEmbed: "https://www.google.com/maps?q=379+Nguyễn+Huệ,+Quy+Nhơn&output=embed",
+        mapLink: "https://www.google.com/maps/search/?api=1&query=379+Nguyễn+Huệ,+Quy+Nhơn"
       },
       {
         name: "Bún rạm Thuỷ",
+        type: "breakfast",
         address: "261 Tăng Bạt Hổ",
-        dish: "Bún rạm",
-        time: "6h - hết sớm",
-        map: "https://www.google.com/maps?q=261+T%C4%83ng+B%E1%BA%A1t+H%E1%BB%95,+Quy+Nh%C6%A1n",
-        tag: "sang"
+        hours: "Sáng",
+        mapEmbed: "https://www.google.com/maps?q=261+Tăng+Bạt+Hổ,+Quy+Nhơn&output=embed",
+        mapLink: "https://www.google.com/maps/search/?api=1&query=261+Tăng+Bạt+Hổ,+Quy+Nhơn"
       },
       {
-        name: "Gỏi cá Thanh Kiều",
-        address: "69/1 Trần Hưng Đạo",
-        dish: "Gỏi cá, bò tái, cháo hàu",
-        time: "9h - 21h",
-        map: "https://www.google.com/maps?q=69/1+Tr%E1%BA%A7n+H%C6%B0ng+%C4%90%E1%BA%A1o,+Quy+Nh%C6%A1n",
-        tag: "trua"
+        name: "Bún tôm, bún rạm Mỹ Hạnh",
+        type: "breakfast",
+        address: "45 Ngô Gia Tự",
+        hours: "6h - 16h",
+        mapEmbed: "https://www.google.com/maps?q=45+Ngô+Gia+Tự,+Quy+Nhơn&output=embed",
+        mapLink: "https://www.google.com/maps/search/?api=1&query=45+Ngô+Gia+Tự,+Quy+Nhơn"
+      },
+      {
+        name: "Ốc Hoa",
+        type: "dinner",
+        address: "51 Tạ Quang Bửu",
+        hours: "Chiều tối",
+        mapEmbed: "https://www.google.com/maps?q=51+Tạ+Quang+Bửu,+Quy+Nhơn&output=embed",
+        mapLink: "https://www.google.com/maps/search/?api=1&query=51+Tạ+Quang+Bửu,+Quy+Nhơn"
       },
       {
         name: "Bánh xèo Gái Nguyệt",
+        type: "dinner",
         address: "188 Bạch Đằng",
-        dish: "Bánh xèo tôm nhảy",
-        time: "16h - 22h",
-        map: "https://www.google.com/maps?q=188+B%E1%BA%A1ch+%C4%90%E1%BA%B1ng,+Quy+Nh%C6%A1n",
-        tag: "toi"
+        hours: "16h - 22h",
+        mapEmbed: "https://www.google.com/maps?q=188+Bạch+Đằng,+Quy+Nhơn&output=embed",
+        mapLink: "https://www.google.com/maps/search/?api=1&query=188+Bạch+Đằng,+Quy+Nhơn"
+      },
+      {
+        name: "Nem chả nướng",
+        type: "dinner",
+        address: "30 Hải Thượng Lãn Ông",
+        hours: "Chiều",
+        mapEmbed: "https://www.google.com/maps?q=30+Hải+Thượng+Lãn+Ông,+Quy+Nhơn&output=embed",
+        mapLink: "https://www.google.com/maps/search/?api=1&query=30+Hải+Thượng+Lãn+Ông,+Quy+Nhơn"
+      },
+      {
+        name: "Gỏi cá Thanh Kiều",
+        type: "lunch",
+        address: "69/1 Trần Hưng Đạo",
+        hours: "9h - 21h",
+        mapEmbed: "https://www.google.com/maps?q=69/1+Trần+Hưng+Đạo,+Quy+Nhơn&output=embed",
+        mapLink: "https://www.google.com/maps/search/?api=1&query=69/1+Trần+Hưng+Đạo,+Quy+Nhơn"
+      },
+      {
+        name: "Bánh bèo - bột lọc",
+        type: "dinner",
+        address: "63 Hoàng Quốc Việt",
+        hours: "15h - 18h",
+        mapEmbed: "https://www.google.com/maps?q=63+Hoàng+Quốc+Việt,+Quy+Nhơn&output=embed",
+        mapLink: "https://www.google.com/maps/search/?api=1&query=63+Hoàng+Quốc+Việt,+Quy+Nhơn"
+      },
+      {
+        name: "Bánh mì chấm Loan",
+        type: "dinner",
+        address: "153 Trần Hưng Đạo",
+        hours: "17h - 23h",
+        mapEmbed: "https://www.google.com/maps?q=153+Trần+Hưng+Đạo,+Quy+Nhơn&output=embed",
+        mapLink: "https://www.google.com/maps/search/?api=1&query=153+Trần+Hưng+Đạo,+Quy+Nhơn"
+      },
+      {
+        name: "Kem Vạn Thành",
+        type: "drink",
+        address: "95 Mai Xuân Thưởng",
+        hours: "Cả ngày",
+        mapEmbed: "https://www.google.com/maps?q=95+Mai+Xuân+Thưởng,+Quy+Nhơn&output=embed",
+        mapLink: "https://www.google.com/maps/search/?api=1&query=95+Mai+Xuân+Thưởng,+Quy+Nhơn"
       },
       {
         name: "Trái cây dầm Nhung",
+        type: "drink",
         address: "96 Vũ Bảo",
-        dish: "Trái cây dầm, sữa chua",
-        time: "Cả ngày",
-        map: "https://www.google.com/maps?q=96+V%C5%A9+B%E1%BA%A3o,+Quy+Nh%C6%A1n",
-        tag: "trangmieng"
+        hours: "Cả ngày",
+        mapEmbed: "https://www.google.com/maps?q=96+Vũ+Bảo,+Quy+Nhơn&output=embed",
+        mapLink: "https://www.google.com/maps/search/?api=1&query=96+Vũ+Bảo,+Quy+Nhơn"
+      },
+      {
+        name: "Sữa đậu cô Năm",
+        type: "drink",
+        address: "160 Xuân Diệu",
+        hours: "17h - 23h",
+        mapEmbed: "https://www.google.com/maps?q=160+Xuân+Diệu,+Quy+Nhơn&output=embed",
+        mapLink: "https://www.google.com/maps/search/?api=1&query=160+Xuân+Diệu,+Quy+Nhơn"
+      },
+      {
+        name: "Bánh xèo Rau Mầm",
+        type: "breakfast",
+        address: "91 Đống Đa",
+        hours: "6h - 22h",
+        mapEmbed: "https://www.google.com/maps?q=91+Đống+Đa,+Quy+Nhơn&output=embed",
+        mapLink: "https://www.google.com/maps/search/?api=1&query=91+Đống+Đa,+Quy+Nhơn"
+      },
+      {
+        name: "Quán Bảy Đức",
+        type: "dinner",
+        address: "Đang cập nhật",
+        hours: "Ăn tối",
+        mapEmbed: "https://www.google.com/maps?q=quán+bảy+đức+quy+nhơn&output=embed",
+        mapLink: "https://www.google.com/maps/search/?api=1&query=quán+bảy+đức+quy+nhơn"
       },
       {
         name: "Cafe Four Seasons",
-        address: "Xuân Diệu - Trần Phú",
-        dish: "Cà phê view biển",
-        time: "7h - 23h",
-        map: "https://www.google.com/maps?q=Four+Seasons+Cafe,+Quy+Nhon",
-        tag: "cafe"
+        type: "drink",
+        address: "Xuân Diệu, Trần Phú",
+        hours: "7h - 23h",
+        mapEmbed: "https://www.google.com/maps?q=four+seasons+quy+nhơn&output=embed",
+        mapLink: "https://www.google.com/maps/search/?api=1&query=four+seasons+quy+nhơn"
       }
     ];
 
-    const container = document.getElementById('places');
-    const buttons = document.querySelectorAll('[data-filter]');
-
-    function render(filter = 'all') {
+    function renderPlaces() {
+      const container = document.getElementById('places');
       container.innerHTML = '';
-      const filtered = filter === 'all' ? data : data.filter(d => d.tag === filter);
-      filtered.forEach(place => {
-        container.innerHTML += `
-          <div class="card">
-            <h3>${place.name}</h3>
-            <p><strong>Địa chỉ:</strong> ${place.address}</p>
-            <p><strong>Món:</strong> ${place.dish}</p>
-            <p><strong>Giờ mở cửa:</strong> ${place.time}</p>
-            <a href="${place.map}" target="_blank">📍 Xem bản đồ</a>
+      for (const place of places) {
+        const card = document.createElement('div');
+        card.className = `card ${place.type}`;
+        card.innerHTML = `
+          <h2>${place.name}</h2>
+          <p><strong>Địa chỉ:</strong> ${place.address}</p>
+          <p><strong>Giờ mở cửa:</strong> ${place.hours}</p>
+          <div class="map-frame">
+            <iframe src="${place.mapEmbed}" loading="lazy"></iframe>
           </div>
+          <a class="map-link" href="${place.mapLink}" target="_blank">🔗 Mở trên Google Maps</a>
         `;
+        container.appendChild(card);
+      }
+    }
+
+    function filterPlaces(type) {
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => {
+        if (type === 'all' || card.classList.contains(type)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
       });
     }
 
-    render();
-
-    buttons.forEach(btn => btn.addEventListener('click', () => {
-      const f = btn.getAttribute('data-filter');
-      render(f);
-    }));
+    renderPlaces();
   </script>
 </body>
 </html>
