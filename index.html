@@ -10,6 +10,18 @@
 <body>
   <header>
     <h1>🦐 Ăn gì ở Quy Nhơn?</h1>
+    <div class="search-bar-wrapper">
+    <div class="search-group">
+    <input
+    type="text"
+    id="search"
+    placeholder="Tìm món, địa chỉ..."
+    style="margin-top:12px; padding:6px; width:220px;"
+    oninput="searchPlaces(this.value)"
+    autocomplete="off"
+    />
+  </div>
+    </div>
     <nav>
       <button onclick="filterPlaces('all')">Tất cả</button>
       <button onclick="filterPlaces('breakfast')">Ăn sáng</button>
@@ -69,7 +81,7 @@
     hours: "Chiều tối",
     rating: 4.2,
     note: "Trông nổi tiếng ngầm á, đánh giá toàn khen",
-    mapEmbed: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3992179.435057829!2d105.29840715026917!3d12.274465958682653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x316f6bfd2b3687bf%3A0x6fa4542d4eb0a81!2z4buQYyBIb2E!5e0!3m2!1svi!2s!4v1753887661133!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`
+    mapEmbed: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3992179.435057829!2d105.29840715026917!3d12.274465958682653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x316f6bfd2b3687bf%3A0x6fa4542d4eb0a81!2z4buQYyBIb2U!5e0!3m2!1svi!2s!4v1753887661133!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`
   },
   {
     name: "Bánh xèo Gia Vỹ 2",
@@ -294,6 +306,56 @@
 
 ];
 
+function removeDiacritics(str) {
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+
+function searchPlaces(query) {
+  query = removeDiacritics(query.trim().toLowerCase());
+  const container = document.getElementById('places');
+  // XÓA các dòng liên quan đến suggestions
+  if (!query) {
+    renderPlaces();
+    return;
+  }
+  const matched = places.filter(place =>
+    removeDiacritics(place.name.toLowerCase()).includes(query) ||
+    removeDiacritics(place.address.toLowerCase()).includes(query)
+  );
+  container.innerHTML = '';
+  for (const place of matched) {
+    const card = document.createElement('div');
+    const types = Array.isArray(place.type) ? place.type.join(' ') : place.type;
+    card.className = `card ${types}`;
+    const stars = Array.from({ length: 5 }, (_, i) => `
+      <span class="star ${i < Math.round(place.rating) ? 'filled' : ''}">★</span>
+    `).join('');
+    card.innerHTML = `
+      <h2>${place.name}</h2>
+      <p><strong>Địa chỉ:</strong> ${place.address}</p>
+      <p><strong>Giờ mở cửa:</strong> ${place.hours}</p>
+      <p><strong>Đánh giá:</strong> <span class="stars">${stars}</span> (${place.rating})</p>
+      <div class="note-area">${place.note ? `<p><strong>Ghi chú:</strong> ${place.note}</p>` : ''}</div>
+      <div class="map-frame">${place.mapEmbed}</div>
+    `;
+    container.appendChild(card);
+  }
+}
+
+function fillSearch(name) {
+  document.getElementById('search').value = name;
+  document.getElementById('suggestions').style.display = 'none';
+  document.getElementById('suggestions').innerHTML = '';
+  searchPlaces(name);
+}
+
+// Ẩn suggestions khi click ra ngoài
+document.addEventListener('click', function(e) {
+  if (!document.getElementById('search').contains(e.target) &&
+      !document.getElementById('suggestions').contains(e.target)) {
+    document.getElementById('suggestions').style.display = 'none';
+  }
+});
 
     function renderPlaces() {
       const container = document.getElementById('places');

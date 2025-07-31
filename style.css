@@ -9,44 +9,150 @@ body {
 header {
   background-color: #4db6ac;
   color: white;
-  padding: 1rem;
+  padding: 1.5rem 0 1rem 0;
   text-align: center;
+  box-shadow: 0 2px 8px #eee;
+  position: relative;
 }
 
+nav {
+  margin-bottom: 8px;
+}
 nav button {
-  margin: 0.2rem;
+  margin: 0 4px 8px 0;
   padding: 0.5rem 1rem;
   border: none;
   background: #00695c;
   color: white;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
 }
-
 nav button:hover {
   background: #004d40;
 }
 
+.search-bar-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 24px 0 24px 0; /* Tăng khoảng cách trên dưới cho nổi bật */
+  width: 100%;
+}
+
+.search-group {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#search {
+  border: none;
+  border-radius: 10px;
+  font-size: 17px;
+  padding: 12px 18px;
+  width: 240px;
+  box-sizing: border-box;
+  background: #f5f7fa;
+  color: #222;
+  box-shadow: 0 2px 8px rgba(76, 182, 172, 0.08);
+  transition: box-shadow 0.2s, background 0.2s;
+  outline: none;
+  margin: 0; /* Xóa margin-top để căn giữa */
+}
+
+#search:focus {
+  background: #e0f7fa;
+  box-shadow: 0 4px 16px rgba(76, 182, 172, 0.18);
+}
+
+#search::placeholder {
+  color: #888;
+  opacity: 1;
+  font-style: italic;
+}
+
+#suggestions {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  margin-top: 4px;
+  background: #fff;
+  border: 1.5px solid #4db6ac;
+  border-radius: 10px;
+  max-width: 240px;
+  width: 100%;
+  box-shadow: 0 6px 24px #b2ebf2;
+  z-index: 100;
+  text-align: left;
+  font-size: 16px;
+  display: none;
+  animation: fadeIn 0.18s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-8px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+#suggestions .suggestion-item {
+  padding: 10px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid #e0f7fa;
+  color: #222;
+  background: #fff;
+  transition: background 0.18s, color 0.18s, border-radius 0.18s;
+  border-radius: 0;
+}
+
+#suggestions .suggestion-item:last-child {
+  border-bottom: none;
+  border-radius: 0 0 10px 10px; /* Bo tròn góc dưới cùng */
+}
+
+#suggestions .suggestion-item:first-child {
+  border-radius: 10px 10px 0 0; /* Bo tròn góc trên cùng nếu muốn */
+}
+
+#suggestions .suggestion-item:hover {
+  background: #e8f9f1; /* Màu xanh nhạt kiểu Grab */
+  color: #00b14f;      /* Xanh lá Grab */
+  font-weight: 600;
+}
+
 main {
+  max-width: 900px;
+  margin: 32px auto;
   padding: 1rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .card {
   background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px #e0e0e0;
+  padding: 18px 18px 12px 18px;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 420px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
 }
-
 .card h2 {
   margin-top: 0;
 }
-
 .card p {
   margin: 0.25rem 0;
+}
+.card:hover {
+  transform: translateY(-4px) scale(1.015);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  border: 1px solid #4db6ac;
 }
 
 .map-frame iframe {
@@ -59,6 +165,7 @@ main {
   display: inline-block;
   font-size: 1.2rem;
   line-height: 1;
+  color: #ffd700;
 }
 
 .star {
@@ -68,33 +175,19 @@ main {
   margin-right: 2px;
   filter: drop-shadow(0 0 1px #999);
 }
-
 .star.filled {
   color: gold;
   text-shadow: 0 0 2px #ffcc00;
 }
-
 .star:hover {
   transform: scale(1.2);
 }
-.card {
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  padding: 1rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  cursor: pointer;
-}
 
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-  transform: scale(1.015);
-  border: 1px solid #4db6ac;
-}
 .note-area {
-  min-height: 50px; /* hoặc 48px, tuỳ bạn muốn cao bao nhiêu */
+  min-height: 50px;
   margin-bottom: 8px;
+  font-style: italic;
+  color: #555;
   display: flex;
   align-items: flex-start;
 }
