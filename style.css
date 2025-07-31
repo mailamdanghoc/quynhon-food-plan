@@ -77,3 +77,24 @@ main {
 .star:hover {
   transform: scale(1.2);
 }
+.card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  transform: scale(1.015);
+  border: 1px solid #4db6ac;
+}
+.note-area {
+  min-height: 50px; /* hoặc 48px, tuỳ bạn muốn cao bao nhiêu */
+  margin-bottom: 8px;
+  display: flex;
+  align-items: flex-start;
+}
