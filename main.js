@@ -1,6 +1,8 @@
 let places = [];
 
-fetch('places.json')
+const jsonUrl = 'places.json?v=' + Date.now(); // Thêm timestamp để luôn lấy mới
+
+fetch(jsonUrl)
   .then(response => response.json())
   .then(data => {
     places = data;
