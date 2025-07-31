@@ -44,15 +44,15 @@ nav button:hover {
 .search-group {
   position: relative;
   display: flex;
-  justify-content: center;
-  width: 100%;
+  gap: 8px;
+  align-items: center;
 }
 
 #search {
   border: none;
   border-radius: 10px;
   font-size: 17px;
-  padding: 12px 18px;
+  padding: 12px 40px 12px 18px;
   width: 240px;
   box-sizing: border-box;
   background: #f5f7fa;
@@ -190,4 +190,74 @@ main {
   color: #555;
   display: flex;
   align-items: flex-start;
+}
+#sort-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0 8px;
+  margin-left: 4px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 500;
+  color: #00796b;
+  transition: color 0.18s;
+}
+#sort-btn:hover {
+  color: #00b14f;
+}
+#sort-menu {
+  min-width: 180px;
+  background: #fff;
+  border: 1px solid #e3e6ee;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(60,72,88,0.12);
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px); /* Sẽ thẳng hàng với nút sort */
+  z-index: 20;
+  display: none;
+  padding: 8px 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  animation: fadeIn 0.18s;
+}
+
+#sort-menu::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  right: 16px; /* Sửa lại cho thẳng với icon nút sort */
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 10px solid #fff;
+  filter: drop-shadow(0 -2px 2px rgba(60,72,88,0.08));
+}
+
+.sort-option {
+  padding: 12px 24px;
+  cursor: pointer;
+  color: #222;
+  background: none;
+  border: none;
+  font-size: 16px;
+  transition: background 0.18s, color 0.18s;
+  border-radius: 8px;
+  text-align: left;
+  outline: none;
+  font-family: inherit;
+  letter-spacing: 0.01em;
+  position: relative;
+}
+
+.sort-option:not(:last-child) {
+  margin-bottom: 2px;
+}
+
+.sort-option:hover, .sort-option:focus {
+  background: #f5f7fa;
+  color: #00796b;
+  font-weight: 500;
 }
